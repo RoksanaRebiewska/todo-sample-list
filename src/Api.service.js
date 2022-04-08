@@ -18,15 +18,14 @@ const httpGet = async (endpoint) => {
     const response = await fetch(`${config.api}${endpoint}`, {
       ...config.options,
     });
+
     const data = await handleReponse(response);
-    const todo = [];
-    for (const key in data) {
-      todo.push({
-        task: data[key].task,
-        done: data[key].done,
-        id: key,
-      });
-    }
+
+    const todo = Object.keys(data).map((item) => ({
+      ...data[item],
+      id: item,
+    }));
+
     return todo;
   } catch (error) {
     throw Error(error);

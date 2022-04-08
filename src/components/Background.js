@@ -13,7 +13,7 @@ const Background = (props) => {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: ${ctx.themeDark ? '#000' : '#eeebeb'};
+    background-color: ${(props) => (props.dark ? '#000' : '#eeebeb')};
     z-index: 0;
     width: 100vw;
   `;
